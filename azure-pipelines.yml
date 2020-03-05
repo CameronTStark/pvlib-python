@@ -43,3 +43,14 @@ jobs:
 
   - script: python setup.py sdist
     displayName: 'Build sdist'
+
+
+trigger:
+  branches:
+    include:
+    - master
+  tags:
+    include:
+    - v*.*.*
+
+- template: ci/azure/deploy.yml
