@@ -1,7 +1,12 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
 
 trigger:
-- azure_cd
+  branches:
+    include:
+      - azure_cd
+  tags:
+     include:
+      - v*
 
 stages:
 - stage: Test
