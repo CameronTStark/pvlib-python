@@ -13,6 +13,8 @@ jobs:
         coverage: true
 
   steps:
+    env:
+      NREL_API_KEY: $nrelApiKey
   - bash: echo "##vso[task.prependpath]/usr/share/miniconda/bin"
     displayName: Add conda to PATH
   - script: conda env create --quiet --file ci/requirements-py$(python.version).yml
@@ -29,8 +31,6 @@ jobs:
   - script: |
       source activate test_env
       pytest pvlib/tests/test_location.py --junitxml=junit/test-results.xml --cov --cov-report=xml --cov-report=html
-    env:
-      NREL_API_KEY: $nrelApiKey
     displayName: 'pytest'
   - task: PublishTestResults@2
     inputs:
