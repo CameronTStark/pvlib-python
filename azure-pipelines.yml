@@ -35,5 +35,5 @@ stages:
       displayName: 'Install distribution dependencies'
 
     - script: |
-        python -m twine upload --repository-url "https://test.pypi.org/legacy/" --username "__token__" --password $(API_KEY) dist/*
+        python -m twine upload --repository-url "https://test.pypi.org/legacy/" --username "__token__" --password $(TEST_PYPI_API_KEY) dist/*
       displayName: 'Upload to PyPI'
