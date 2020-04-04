@@ -16,7 +16,6 @@ stages:
       vmImage: ubuntu-16.04
 
   condition: contains(variables['Build.SourceBranch'], 'tags')
-  jobs:
   - job: 'Publish'
     dependsOn: 'Test_conda_linux'
     variables:
