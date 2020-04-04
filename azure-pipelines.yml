@@ -35,9 +35,5 @@ jobs:
       python setup.py sdist bdist_wheel
     displayName: 'Build sdist and wheel'
 
-  - task: TwineAuthenticate@1
-    displayName: 'Twine Authenticate'
-    inputs:
-      pythonUploadServiceConnection: pypitest
   - script: |
        python -m twine upload --repository-url "https://test.pypi.org/legacy/" --username "__token__" --password $(TEST_PYPI_API_KEY) dist/*
