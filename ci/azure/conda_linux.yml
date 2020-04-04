@@ -28,7 +28,7 @@ jobs:
     displayName: 'List installed dependencies'
   - script: |
       source activate test_env
-      pytest pvlib --remote-data --junitxml=junit/test-results.xml --cov --cov-report=xml --cov-report=html
+      pytest pvlib/tests/iotools/test_psm3.py --remote-data --junitxml=junit/test-results.xml --cov --cov-report=xml --cov-report=html
     env:
       NREL_API_KEY: $(nrelApiKey)
     displayName: 'pytest'
