@@ -34,5 +34,5 @@ jobs:
   - script: pip install wheel twine
     displayName: 'Install distribution dependencies'
 
-  - script: python -m twine upload --repository-url "https://test.pypi.org/legacy/" --username "__token__" --password $(API_KEY) dist/*
+  - script: python -m twine upload --repository-url "https://test.pypi.org/legacy/" --username "__token__" --password $env:API_KEY dist/*
     displayName: 'Upload to PyPI'
