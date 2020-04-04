@@ -15,8 +15,8 @@ stages:
       name: Test_conda_linux
       vmImage: ubuntu-16.04
 
-  condition: contains(variables['Build.SourceBranch'], 'tags')
   - job: 'Publish'
+    condition: contains(variables['Build.SourceBranch'], 'tags')
     dependsOn: 'Test_conda_linux'
     variables:
       API_KEY: $(TEST_PYPI_API_KEY)
