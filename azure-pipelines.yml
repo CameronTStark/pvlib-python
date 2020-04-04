@@ -26,7 +26,7 @@ jobs:
       versionSpec: '3.x'
       architecture: 'x64'
 
-  - script: python setup.py sdist bdist_wheel
+  - script: python setup.py sdist
     displayName: 'Build sdist and wheel'
 
   - script: pip install wheel twine
