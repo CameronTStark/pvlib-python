@@ -8,15 +8,9 @@ jobs:
     vmImage: ${{ parameters.vmImage }}
   strategy:
     matrix:
-      Python35:
-        python.version: '35'
       Python36:
         python.version: '36'
         coverage: true
-      Python37:
-        python.version: '37'
-      Python38:
-        python.version: '38'
 
   steps:
   - bash: echo "##vso[task.prependpath]/usr/share/miniconda/bin"
@@ -35,7 +29,7 @@ jobs:
   - script: |
       source activate test_env
       export NREL_API_KEY=$(nrelApiKey)
-      pytest pvlib --remote-data --junitxml=junit/test-results.xml --cov --cov-report=xml --cov-report=html
+      pytest pvlib --junitxml=junit/test-results.xml --cov --cov-report=xml --cov-report=html
     displayName: 'pytest'
   - task: PublishTestResults@2
     inputs:
