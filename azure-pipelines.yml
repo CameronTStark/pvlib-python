@@ -20,8 +20,6 @@ stages:
   - job: 'Publish'
     condition: contains(variables['Build.SourceBranch'], 'tags')
     dependsOn: 'Test_conda_linux'
-    variables:
-      API_KEY: $(TEST_PYPI_API_KEY)
     pool:
       vmImage: 'ubuntu-latest'
     steps:
