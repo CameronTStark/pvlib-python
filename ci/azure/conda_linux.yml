@@ -29,7 +29,7 @@ jobs:
   - script: |
       source activate test_env
       export NREL_API_KEY=$(nrelApiKey)
-      pytest pvlib pvlib/tests/test_location.py --junitxml=junit/test-results.xml --cov --cov-report=xml --cov-report=html
+      pytest pvlib/tests/test_location.py --junitxml=junit/test-results.xml --cov --cov-report=xml --cov-report=html
     displayName: 'pytest'
   - task: PublishTestResults@2
     inputs:
