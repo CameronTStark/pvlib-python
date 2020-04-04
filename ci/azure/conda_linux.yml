@@ -12,6 +12,8 @@ jobs:
         python.version: '36'
         coverage: true
 
+  env:
+    NREL_API_KEY: $nrelApiKey
   steps:
   - bash: echo "##vso[task.prependpath]/usr/share/miniconda/bin"
     displayName: Add conda to PATH
@@ -28,7 +30,6 @@ jobs:
     displayName: 'List installed dependencies'
   - script: |
       source activate test_env
-      export NREL_API_KEY=$(nrelApiKey)
       pytest pvlib/tests/test_location.py --junitxml=junit/test-results.xml --cov --cov-report=xml --cov-report=html
     displayName: 'pytest'
   - task: PublishTestResults@2
