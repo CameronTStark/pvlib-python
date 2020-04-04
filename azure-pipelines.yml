@@ -33,10 +33,7 @@ jobs:
 
   - script: pip install wheel twine
     displayName: 'Install distribution dependencies'
-  - task: TwineAuthenticate@1
-    displayName: 'Twine Authenticate'
-    inputs:
-      pythonUploadServiceConnection: pypitest
+
   - script: |
       python -m twine upload --verbose --repository-url "https://test.pypi.org/legacy/" --username "__token__" --password $(API_KEY) dist/*
     displayName: 'Upload to PyPI'
