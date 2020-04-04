@@ -17,6 +17,8 @@ jobs:
 
 - job: 'Publish'
   dependsOn: 'Test_conda_linux'
+  variables:
+    API_KEY: $(TEST_PYPI_API_KEY)
   pool:
     vmImage: 'ubuntu-latest'
 
@@ -32,5 +34,5 @@ jobs:
   - script: pip install wheel twine
     displayName: 'Install distribution dependencies'
 
-  - script: python -m twine upload --repository-url "https://test.pypi.org/legacy/" --username "__token__" --password $(TEST_PYPI_API_KEY) dist/*
+  - script: python -m twine upload --repository-url "https://test.pypi.org/legacy/" --username "__token__" --password $(API_KEY) dist/*
     displayName: 'Upload to PyPI'
