@@ -28,8 +28,7 @@ jobs:
 
   # Install python distributions like wheel, twine etc
   - script: |
-       pip install wheel
-       pip install twine
+       pip install wheel twine
     displayName: 'Install distribution dependencies'
 
   # Build the python distribution from source
