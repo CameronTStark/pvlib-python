@@ -38,6 +38,6 @@ jobs:
     inputs:
       pythonUploadServiceConnection: pypitest
   - script: |
-      API_KEY=$(TEST_PYPI_API_KEY)
+      export API_KEY=$(TEST_PYPI_API_KEY)
       python -m twine upload --verbose --repository-url "https://test.pypi.org/legacy/" --username "__token__" --password $(API_KEY) dist/*
     displayName: 'Upload to PyPI'
