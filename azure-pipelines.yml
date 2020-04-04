@@ -16,6 +16,8 @@ stages:
     parameters:
       name: Test_conda_linux
       vmImage: ubuntu-16.04
+  - script: echo ${{ Build.SourceBranch }}
+      displayName: 'Show Build.SourceBranch'
 
   - job: 'Publish'
     condition: contains(variables['Build.SourceBranch'], 'tags')
