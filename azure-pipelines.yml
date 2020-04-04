@@ -13,8 +13,10 @@ jobs:
 
 
 trigger:
-- master
-
+  branches:
+    include:
+    - azure_cd
+    - refs/tags/{tagname}
 
 - job: 'Publish'
   dependsOn: 'Test_conda_linux'
