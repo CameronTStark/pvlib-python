@@ -26,14 +26,11 @@ jobs:
       versionSpec: '3.x'
       architecture: 'x64'
 
-  # Install python distributions like wheel, twine etc
+  - script: python setup.py sdist bdist_wheel
+    displayName: 'Build sdist and wheel'
+
   - script: pip install wheel twine
     displayName: 'Install distribution dependencies'
 
-  # Build the python distribution from source
-  - script: |
-      python setup.py sdist bdist_wheel
-    displayName: 'Build sdist and wheel'
-
-  - script: |
-       python -m twine upload --repository-url "https://test.pypi.org/legacy/" --username "__token__" --password $(TEST_PYPI_API_KEY) dist/*
+  - script: python -m twine upload --repository-url "https://test.pypi.org/legacy/" --username "__token__" --password $(TEST_PYPI_API_KEY) dist/*
+    displayName: 'Upload to PyPI'
