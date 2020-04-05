@@ -12,9 +12,9 @@ stages:
 - stage: Test
   jobs:
   - job: test_linux
-  - template: ci/azure/conda_linux.yml
+  - template: ci/azure/posix.yml
     parameters:
-      name: Test_conda_linux
+      name: Test_bare_Linux
       vmImage: ubuntu-16.04
 
   - job: 'Publish'
@@ -28,11 +28,11 @@ stages:
         versionSpec: '3.x'
         architecture: 'x64'
 
-    - script: python setup.py sdist bdist_wheel
-      displayName: 'Build sdist and wheel'
-
     - script: pip install wheel twine
       displayName: 'Install distribution dependencies'
+
+    - script: python setup.py sdist bdist_wheel
+      displayName: 'Build sdist and wheel'
 
     - script: |
         python -m twine upload --repository-url "https://test.pypi.org/legacy/" --username "__token__" --password $(TEST_PYPI_API_KEY) dist/*
