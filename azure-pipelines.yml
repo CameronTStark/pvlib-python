@@ -30,9 +30,11 @@ stages:
 
     - script: |
          pip install wheel twine
+      displayName: 'install requirements'
  
     - script: |
          python setup.py bdist_wheel
+      displayName: 'build'
 
     - task: TwineAuthenticate@1
       displayName: 'Twine Authenticate'
@@ -41,3 +43,4 @@ stages:
  
     - script: |
          python -m twine upload -r "pypitest" --config-file $(PYPIRC_PATH) dist/*.whl
+      displayName: 'upload'
