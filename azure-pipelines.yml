@@ -29,11 +29,12 @@ stages:
         architecture: 'x64'
 
     - script: |
-         pip install wheel twine
- 
+         pip install wheel
+         pip install twine
+     
     - script: |
          python setup.py bdist_wheel
-
+     
     - task: TwineAuthenticate@1
       displayName: 'Twine Authenticate'
       inputs:
