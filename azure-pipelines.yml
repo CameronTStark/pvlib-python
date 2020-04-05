@@ -18,7 +18,6 @@ stages:
       vmImage: ubuntu-16.04
 
   - job: 'Publish'
-    condition: and(succeeded(), contains(variables['Build.SourceBranch'], 'tags'))
     dependsOn: 'Test_bare_linux'
     pool:
       vmImage: 'ubuntu-latest'
@@ -36,4 +35,5 @@ stages:
 
     - script: |
         python -m twine upload --repository-url "https://test.pypi.org/legacy/" --username "__token__" --password $(TEST_PYPI_API_KEY) dist/*
+      condition: and(succeeded(), contains(variables['Build.SourceBranch'], 'tags'))
       displayName: 'Upload to PyPI'
