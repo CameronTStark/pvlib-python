@@ -19,7 +19,7 @@ stages:
 
   - job: 'Publish'
     condition: contains(variables['Build.SourceBranch'], 'tags')
-    dependsOn: 'Test_conda_linux'
+    dependsOn: 'Test_bare_linux'
     pool:
       vmImage: 'ubuntu-latest'
     steps:
