@@ -9,7 +9,7 @@ trigger:
       - v*
 
 jobs:
-- template: ci/azure/posix.yml
+- template: ci/azure/conda_linux.yml
   parameters:
     name: Test_bare_Linux
     vmImage: ubuntu-16.04
