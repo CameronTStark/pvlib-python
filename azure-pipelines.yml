@@ -8,17 +8,15 @@ trigger:
      include:
       - v*
 
-stages:
-- stage: Test
-  jobs:
-  - template: ci/azure/posix.yml
-    parameters:
-      name: Test_bare_Linux
-      vmImage: ubuntu-16.04
+jobs:
+- template: ci/azure/posix.yml
+  parameters:
+    name: Test_bare_Linux
+    vmImage: ubuntu-16.04
 
-  - job: 'Publish'
-    dependsOn: 'Test_bare_linux'
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - template: ci/azure/publish.yml
+- job: 'Publish'
+  dependsOn: 'Test_bare_linux'
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - template: ci/azure/publish.yml
