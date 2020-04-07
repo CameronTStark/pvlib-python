@@ -17,8 +17,9 @@ stages:
       name: Test_bare_Linux
       vmImage: ubuntu-16.04
 
-  - job: 'Publish'
+  - job: publish
     dependsOn: 'Test_bare_linux'
-    pool:
-      vmImage: 'ubuntu-latest'
   - template: ci/azure/publish.yml
+    parameters:
+      name: Publish
+      vmImage: ubuntu-16.04
