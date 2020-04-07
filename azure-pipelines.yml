@@ -21,5 +21,4 @@ stages:
     dependsOn: 'Test_bare_linux'
     pool:
       vmImage: 'ubuntu-latest'
-    steps:
   - template: ci/azure/publish.yml
