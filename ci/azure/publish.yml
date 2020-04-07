@@ -1,13 +1,5 @@
-parameters:
-  name: ''
-  vmImage: ''
 
-jobs:
-- job: ${{ parameters.name }}
-  pool:
-    vmImage: ${{ parameters.vmImage }}
-
-  steps:
+steps:
   - task: UsePythonVersion@0
     inputs:
       versionSpec: '3.x'
