@@ -11,7 +11,6 @@ trigger:
 stages:
 - stage: Test
   jobs:
-  - job: test_linux
   - template: ci/azure/posix.yml
     parameters:
       name: Test_bare_Linux
