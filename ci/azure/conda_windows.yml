@@ -8,7 +8,7 @@ jobs:
     vmImage: ${{ parameters.vmImage }}
   strategy:
     matrix:
-      Python35-windows:
+      Python35-windows-min:
         python.version: '35-min'
       Python35-windows:
         python.version: '35'
