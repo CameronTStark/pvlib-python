@@ -9,14 +9,14 @@ trigger:
       - v*
 
 jobs:
-- template: ci/azure/conda_windows.yml
+- template: ci/azure/conda_linux.yml
   parameters:
-    name: Test_conda_windows
-    vmImage: vs2017-win2016
+    name: Test_conda_linux
+    vmImage: ubuntu-16.04
 
 
 - job: 'Publish'
-  dependsOn: 'Test_conda_windows'
+  dependsOn: 'Test_conda_linux'
   pool:
     vmImage: 'ubuntu-latest'
   steps:
