@@ -16,7 +16,7 @@ jobs:
 
 
 - job: 'Publish'
-  dependsOn: 'Test_bare_linux'
+  dependsOn: 'Test_conda_windows'
   pool:
     vmImage: 'ubuntu-latest'
   steps:
